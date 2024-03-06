@@ -1,97 +1,102 @@
-import { AggregateRoot, EntityID } from "~/_shared/domain";
+import { AggregateRoot, EntityID, Optional } from "~/_shared/domain";
+import { Address } from "../value-object";
+import { EducationLevelEnum, GenderEnum } from "../enums";
 
 export type MiraProps = {
   userId: EntityID
-  gender: string
+  gender: GenderEnum
   profession: string
   yearExperience: number
   biography: string
   birthDate: Date
-  location: string
-  isWork: boolean
-  isFreelancer: boolean
-  image: string
-  coverImage: string
+  address: Address
+  educationLevel: EducationLevelEnum
+  isWork?: boolean
+  isFreelancer?: boolean
+  coverImage?: string
   createdAt: Date
   updatedAt: Date
 }
 
 export class Mira extends AggregateRoot<MiraProps>{
-  get userId(){
-    return this.props.userId
+  get userId() {
+    return this.props.userId.toString()
   }
 
-  get gender(){
+  get gender() {
     return this.props.gender
   }
 
-  get profession(){
+  get profession() {
     return this.props.profession
   }
 
-  get yearExperience(){
+  get yearExperience() {
     return this.props.yearExperience
   }
 
-  get biography(){
+  get biography() {
     return this.props.biography
   }
 
-  get birthDate(){
+  get birthDate() {
     return this.props.birthDate
   }
 
-  get location(){
-    return this.props.location
+  get address() {
+    return this.props.address
   }
 
-  get isWork(){
+  get isWork() {
     return this.props.isWork
   }
 
-  get isFreelancer(){
+  get isFreelancer() {
     return this.props.isFreelancer
   }
 
-  get image(){
-    return this.props.image
-  }
-
-  get coverImage(){
+  get coverImage() {
     return this.props.coverImage
   }
 
-  get createdAt(){
+  get createdAt() {
     return this.props.createdAt
   }
 
-  get updatedAt(){
+  get updatedAt() {
     return this.props.updatedAt
   }
 
-  work(){
+  work() {
     this.props.isWork = true
   }
 
-  freelancer(){
+  freelancer() {
     this.props.isFreelancer = true
+  }
+
+  static create(
+    props: Optional<MiraProps, 'createdAt' | 'updatedAt'>,
+    id?: EntityID,
+  ) {
+    const mira = new Mira(
+      {
+        ...props,
+        isWork: props.isWork ?? false,
+        isFreelancer: props.isFreelancer ?? false,
+        createdAt: props.createdAt ?? new Date(),
+        updatedAt: props.updatedAt ?? new Date(),
+      },
+      id,
+    )
+
+    return mira
   }
 
   toJSON() {
     return {
       id: this.id.toString(),
-      userId: this.props.userId.toString(),
-      gender: this.props.gender,
-      profession: this.props.profession,
-      yearExperience: this.props.yearExperience,
-      birthDate: this.props.birthDate,
-      location: this.props.location,
-      isWork: this.props.isWork,
-      isFreelancer: this.props.isFreelancer,
-      image: this.props.image,
-      coverImage: this.props.coverImage,
-      createdAt: this.props.createdAt,
-      updatedAt: this.props.updatedAt
+      ...this.props
     }
   }
 }
