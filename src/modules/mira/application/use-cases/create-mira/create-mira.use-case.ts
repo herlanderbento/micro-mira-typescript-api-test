@@ -1,7 +1,11 @@
 import { IUseCase } from '~/_shared/application';
 import { CreateMiraInput } from './create-mira.input';
 import { IMiraRepository, Mira } from '~/modules/mira/domain';
-import { MiraOutputMapper, MiraOutputProps } from '../../common';
+import {
+  MiraAlreadyExistsError,
+  MiraOutputMapper,
+  MiraOutputProps,
+} from '../../common';
 
 export class CreateMiraUseCase
   implements IUseCase<CreateMiraInput, CreateMiraOutput>
@@ -13,7 +17,7 @@ export class CreateMiraUseCase
 
     await this.miraRepository.insert(mira);
 
-    return MiraOutputMapper.toOutput(mira)
+    return MiraOutputMapper.toOutput(mira);
   }
 }
 

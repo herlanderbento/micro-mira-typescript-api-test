@@ -1,24 +1,28 @@
 import { AggregateRoot, EntityID, Optional } from "~/_shared/domain";
 import { Address } from "../value-object";
-import { EducationLevelEnum, GenderEnum } from "../enums";
+import { EducationLevelTypeEnum, GenderTypeEnum } from "../enums";
 
 export type MiraProps = {
   userId: EntityID
-  gender: GenderEnum
+  gender: GenderTypeEnum
   profession: string
   yearExperience: number
-  biography: string
-  birthDate: Date
+  biography?: string | null
+  birthdate: Date
   address: Address
-  educationLevel: EducationLevelEnum
+  educationLevel: EducationLevelTypeEnum
   isWork?: boolean
   isFreelancer?: boolean
-  coverImage?: string
+  coverImage?:string | null
   createdAt: Date
   updatedAt: Date
 }
 
 export class Mira extends AggregateRoot<MiraProps>{
+  constructor(props: MiraProps, id?: EntityID) {
+    super(props, id);
+  }
+
   get userId() {
     return this.props.userId.toString()
   }
@@ -39,12 +43,20 @@ export class Mira extends AggregateRoot<MiraProps>{
     return this.props.biography
   }
 
-  get birthDate() {
-    return this.props.birthDate
+  get birthdate() {
+    return this.props.birthdate
   }
 
-  get address() {
+  get address(): Address {
     return this.props.address
+  }
+  
+  changeAddress(address: Address) {
+    this.props.address = address;
+  }
+
+  get educationLevel() {
+    return this.props.educationLevel
   }
 
   get isWork() {
@@ -75,6 +87,10 @@ export class Mira extends AggregateRoot<MiraProps>{
     this.props.isFreelancer = true
   }
 
+  set address(address: Address) {
+    this.props.address = address;
+  }
+
   static create(
     props: Optional<MiraProps, 'createdAt' | 'updatedAt'>,
     id?: EntityID,
@@ -82,6 +98,8 @@ export class Mira extends AggregateRoot<MiraProps>{
     const mira = new Mira(
       {
         ...props,
+        biography: props.biography ?? null,
+        coverImage: props.coverImage ?? null,
         isWork: props.isWork ?? false,
         isFreelancer: props.isFreelancer ?? false,
         createdAt: props.createdAt ?? new Date(),

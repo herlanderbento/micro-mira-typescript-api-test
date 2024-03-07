@@ -12,7 +12,7 @@ export type MiraOutputProps = {
   profession: string
   yearExperience: number
   biography: string
-  birthDate: Date
+  birthdate: Date
   address: Address
   educationLevel: EducationLevelEnum
   isWork?: boolean

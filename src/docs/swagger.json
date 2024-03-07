@@ -1,29 +1,19 @@
 {
   "openapi": "3.0.0",
   "info": {
-    "title": "Micro Authentication API - Mirantes Technologic",
-    "description": "Microsservice Authentication API, documentation for developers",
+    "title": "Micro Mira API - Mirantes Technologic",
+    "description": "Microsservice Mira API, documentation for developers",
     "version": "1.0.1",
     "contact": {
       "email": "herlander.bento@mirantes.io"
     }
   },
   "paths": {
-    "/v1/auth/login": {
+    "/v1/mira": {
       "post": {
-        "tags": ["Authentication"],
-        "summary": "Authentication user",
-        "description": "Authentication user",
-        "parameters": [
-          {
-            "name": "devices",
-            "in": "header",
-            "description": "devices",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
+        "tags": ["Mira"],
+        "summary": "Mira user",
+        "description": "Mira user",
         "requestBody": {
           "content": {
             "application/json": {

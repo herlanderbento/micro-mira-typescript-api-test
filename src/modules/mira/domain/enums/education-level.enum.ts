@@ -1,4 +1,4 @@
-export enum EducationLevelEnum {
+export enum EducationLevelTypeEnum {
   PrimarySchool = 'primarySchool',
   HighSchool = 'highSchool',
   UniversityEducation = 'universityEducation',

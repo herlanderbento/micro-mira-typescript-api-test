@@ -7,16 +7,20 @@ export type AddressProps = {
 }
 
 export class Address extends ValueObject<AddressProps> {
+  constructor(props: AddressProps) {
+    super(props);
+  }
+
   get street() {
     return this.props.street;
   }
 
-  get country() {
-    return this.props.country;
-  }
-
   get city() {
     return this.props.city;
+  }
+
+  get country() {
+    return this.props.country;
   }
 
   static create(props: AddressProps) {

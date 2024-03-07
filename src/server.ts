@@ -3,7 +3,7 @@ import app from './app';
 
 const server = http.createServer(app);
 
-const PORT: number = Number(process.env.PORT) || 3000;
+const PORT: number = Number(process.env.PORT) || 3003;
 
 server.listen(PORT, () => {
   console.log(` === SERVER IS RUNNING ON PORT [${PORT}] === `);

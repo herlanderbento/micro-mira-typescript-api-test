@@ -4,7 +4,7 @@ services:
   app:
     build: .
     command: ./.docker/start.sh
-    container_name: micro-authentication-api
+    container_name: micro-mira-api
     ports: 
       - 3000:3000
     volumes: 
@@ -19,4 +19,4 @@ services:
     environment:
       MONGO_ROOT_USERNAME: admin
       MONGO_ROOT_PASSWORD: admin
-      MONGO_DATABASE: micro-authentication-mongodb
+      MONGO_DATABASE: micro-mira-mongodb

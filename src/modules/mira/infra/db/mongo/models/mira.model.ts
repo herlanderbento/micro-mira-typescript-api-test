@@ -1,7 +1,7 @@
 import { Schema, Types, model } from 'mongoose';
 import {
-  EducationLevelEnum,
-  GenderEnum,
+  EducationLevelTypeEnum,
+  GenderTypeEnum,
   MiraProps,
 } from '~/modules/mira/domain';
 
@@ -10,7 +10,7 @@ export type IMiraModelDocument = Document & {
 } & MiraProps;
 
 export const MiraModel = model<IMiraModelDocument>(
-  'mira',
+  'miras',
   new Schema({
     _id: String,
     userId: {
@@ -20,7 +20,7 @@ export const MiraModel = model<IMiraModelDocument>(
     gender: {
       type: String,
       required: true,
-      enum: GenderEnum,
+      enum: GenderTypeEnum,
     },
     profession: {
       type: String,
@@ -34,19 +34,28 @@ export const MiraModel = model<IMiraModelDocument>(
       type: String,
       required: true,
     },
-    birthDate: {
+    birthdate: {
       type: Date,
       required: true,
     },
     address: {
-      country: String,
-      city: String,
-      street: String,
+      country: {
+        type: String,
+        default: null
+      },
+      city: {
+        type: String,
+        default: null
+      },
+      street: {
+        type: String,
+        default: null
+      },
     },
     educationLevel: {
       type: String,
       required: true,
-      enum: EducationLevelEnum,
+      enum: EducationLevelTypeEnum,
     },
     isWork: Boolean,
     isFreelancer: Boolean,
