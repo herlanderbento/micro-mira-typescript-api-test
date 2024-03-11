@@ -7,9 +7,14 @@ import {
 import { MiraModel } from '../models';
 import { MiraModelMapper } from '../mappers';
 import { NotFoundError } from '~/_shared/domain';
+import { count } from 'console';
+import { update } from 'lodash';
+import { models } from 'mongoose';
+import { skip } from 'node:test';
 
 export class MiraMongooseRepository implements IMiraRepository {
   constructor(private miraModel: typeof MiraModel) {}
+
 
   async insert(entity: Mira): Promise<void> {
     const model = MiraModelMapper.toModel(entity);
@@ -19,7 +24,15 @@ export class MiraMongooseRepository implements IMiraRepository {
   async findById(id: string): Promise<Mira | null> {
     const model = await this.miraModel.findOne({
       _id: id,
-    });
+    })
+
+    return model ? MiraModelMapper.toEntity(model) : null;
+  }
+
+  async findByUserId(userId: string): Promise<Mira | null> {
+    const model = await this.miraModel.findOne({
+      userId,
+    })
 
     return model ? MiraModelMapper.toEntity(model) : null;
   }

@@ -1,17 +1,27 @@
-## Create Mira
+@hostname = localhost
+@port = 3001
+@host = {{hostname}}:{{port}}/v1
+@contentType = application/json
 
-POST http://localhost:3003/v1/miras
-Content-Type: application/json
+### Mira
+### Create Mira
+POST http://{{host}}/miras
+Content-Type: {{contentType}}
 
 {
-    "userId": "4d09629c-1c2f-46b3-8b86-c0c410181274",
+    "userId": "936381cb-3a44-4692-b52e-ba302db628f7",
     "gender": "male",
     "profession": "Software Developer",
     "yearExperience": 4,
+    "address": {
+        "street": "123 Main St",
+        "city": "New York",
+        "country": "NY"
+    },
     "biography": "some biography",
     "birthdate": "2024-01-15T13:23:16.655+00:00",
     "educationLevel": "universityEducation"
 }
 
-###
-GET http://localhost:3003/v1
+### Get Mira by User
+GET http://{{host}}/miras/936381cb-3a44-4692-b52e-ba302db628f7

@@ -15,4 +15,5 @@ export class MiraSearchResult extends SearchResult<Mira> {}
 export interface IMiraRepository
   extends Omit<IRepository<Mira>, 'delete' | 'findAll' | 'bulkInsert'> {
   findAll(props: MiraSearchParams): Promise<MiraSearchResult>;
+  findByUserId(userId: string): Promise<Mira| null>;
 }

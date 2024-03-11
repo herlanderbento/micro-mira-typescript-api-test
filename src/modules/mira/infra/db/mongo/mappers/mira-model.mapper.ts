@@ -23,7 +23,24 @@ export class MiraModelMapper {
   }
 
   static toEntity(model: IMiraModelDocument): Mira {
-    const mira = new Mira(model, new EntityID(String(model._id)));
+    const mira = new Mira(
+      {
+        userId: model.userId,
+        gender: model.gender,
+        profession: model.profession,
+        yearExperience: model.yearExperience,
+        biography: model.biography,
+        birthdate: model.birthdate,
+        address: model.address,
+        educationLevel: model.educationLevel,
+        isWork: model.isWork,
+        isFreelancer: model.isFreelancer,
+        coverImage: model.coverImage,
+        createdAt: model.createdAt,
+        updatedAt: model.updatedAt,
+      },
+      new EntityID(String(model._id))
+    );
     return mira;
   }
 }

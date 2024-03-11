@@ -1,4 +1,4 @@
 // created from 'create-ts-index'
 
 export * from './create-mira';
-export * from './update-mira';
+export * from './get-mira-by-user';
