@@ -1,23 +1,25 @@
 import { EntityID } from '~/_shared/domain';
 import {
-  GenderEnum,
-  EducationLevelEnum,
+
   Mira,
   Address,
+  EducationLevelTypeEnum,
+  GenderTypeEnum,
 } from '~/modules/mira/domain';
 
 export type MiraOutputProps = {
+  id: string
   userId: EntityID
-  gender: GenderEnum
+  gender: GenderTypeEnum
   profession: string
   yearExperience: number
-  biography: string
+  biography?: string | null
   birthdate: Date
   address: Address
-  educationLevel: EducationLevelEnum
+  educationLevel: EducationLevelTypeEnum
   isWork?: boolean
   isFreelancer?: boolean
-  coverImage?: string
+  coverImage?:string | null
   createdAt: Date
   updatedAt: Date
 }
