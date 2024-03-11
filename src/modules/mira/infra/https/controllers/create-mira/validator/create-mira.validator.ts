@@ -33,7 +33,6 @@ export async function createMiraValidated(request: Request) {
       .required(),
     isWork: Yup.boolean(),
     isFreelancer: Yup.boolean(),
-    coverImage: Yup.string(),
   });
 
   return await schema.validate(

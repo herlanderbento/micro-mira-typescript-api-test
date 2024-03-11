@@ -12,5 +12,4 @@ export type CreateMiraInput = {
   educationLevel: EducationLevelTypeEnum
   isWork?: boolean
   isFreelancer?: boolean
-  coverImage?: string
 }

@@ -13,6 +13,14 @@ export class CreateMiraUseCase
   constructor(private miraRepository: IMiraRepository) {}
 
   async execute(input: CreateMiraInput): Promise<CreateMiraOutput> {
+    const miraAlreadyExists = await this.miraRepository.findByUserId(
+      input.userId.toString()
+    );
+
+    if (miraAlreadyExists) {
+      throw new MiraAlreadyExistsError();
+    }
+
     const mira = Mira.create(input);
 
     await this.miraRepository.insert(mira);
