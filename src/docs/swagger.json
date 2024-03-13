@@ -1,8 +1,8 @@
 {
   "openapi": "3.0.0",
   "info": {
-    "title": "Micro Mira API - Mirantes Technologies",
-    "description": "Microsservice Mira API, documentation for developers",
+    "title": "Mira API Microsservice - Mirantes Technologies",
+    "description": "Mira API Microsservice, documentation for developers",
     "version": "1.0.1",
     "contact": {
       "email": "herlander.bento@mirantes.io"
@@ -11,7 +11,9 @@
   "paths": {
     "/v1/miras": {
       "post": {
-        "tags": ["Mira"],
+        "tags": [
+          "Mira"
+        ],
         "summary": "Create mira",
         "description": "Create a mira",
         "requestBody": {
@@ -164,10 +166,12 @@
     },
     "/v1/miras/{userId}/users": {
       "get": {
-        "tags": ["Mira"],
+        "tags": [
+          "Mira"
+        ],
         "summary": "Get mira by user",
         "description": "Get a mira by user",
-        "parameters":[
+        "parameters": [
           {
             "name": "userId",
             "in": "path",
@@ -212,7 +216,219 @@
               }
             }
           }
-        
+        }
+      }
+    },
+    "/v1/miras/{id}": {
+      "get": {
+        "tags": [
+          "Mira"
+        ],
+        "summary": "Get mira",
+        "description": "Get a mira",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/responseData"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "example": false
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Mira Not Found using ID 936381cb-3a44-4692-b52e-ba302db628f9"
+                    },
+                    "statusCodes": {
+                      "type": "number",
+                      "example": 409
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "patch": {
+        "tags": [
+          "Mira"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "summary": "Update mira",
+        "description": "Update a mira",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "gender": {
+                    "required": true,
+                    "type": "string",
+                    "example": "male"
+                  },
+                  "profession": {
+                    "required": true,
+                    "type": "string",
+                    "example": "Software Developer"
+                  },
+                  "yearExperience": {
+                    "required": true,
+                    "type": "number",
+                    "example": 4
+                  },
+                  "educationLevel": {
+                    "required": true,
+                    "type": "string",
+                    "example": "university"
+                  },
+                  "address": {
+                    "type": "object",
+                    "properties": {
+                      "street": {
+                        "type": "string",
+                        "example": "123 Main St"
+                      },
+                      "city": {
+                        "type": "string",
+                        "example": "New York"
+                      },
+                      "country": {
+                        "type": "string",
+                        "example": "Angola"
+                      }
+                    }
+                  },
+                  "biography": {
+                    "type": "string",
+                    "example": "some biography"
+                  },
+                  "birthdate": {
+                    "type": "date",
+                    "example": "2024-01-15T13:23:16.655+00:00"
+                  },
+                  "isWork": {
+                    "type": "boolean",
+                    "example": false
+                  },
+                  "isFreelancer": {
+                    "type": "boolean",
+                    "example": false
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Create a mira",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/responseData"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "example": false
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Mira Not Found using ID 936381cb-3a44-4692-b52e-ba302db628f9"
+                    },
+                    "statusCodes": {
+                      "type": "number",
+                      "example": 409
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "errors": {
+                      "type": "object",
+                      "properties": {
+                        "userId": {
+                          "type": "string",
+                          "example": "userId is a required field"
+                        },
+                        "gender": {
+                          "type": "string",
+                          "example": "gender is a required field"
+                        },
+                        "profession": {
+                          "type": "string",
+                          "example": "profession is a required field"
+                        },
+                        "yearExperience": {
+                          "type": "number",
+                          "example": "yearExperience is a required field"
+                        },
+                        "birthdate": {
+                          "type": "number",
+                          "example": "birthdate is a required field"
+                        },
+                        "educationLevel": {
+                          "type": "number",
+                          "example": "educationLevel is a required field"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
         }
       }
     }
@@ -231,6 +447,11 @@
         "data": {
           "type": "object",
           "properties": {
+            "id": {
+              "required": true,
+              "type": "string",
+              "example": "3ba2c9e1-6c4c-425a-8893-8ab6385e57ce"
+            },
             "userId": {
               "required": true,
               "type": "string",

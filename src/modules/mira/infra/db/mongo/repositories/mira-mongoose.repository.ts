@@ -7,15 +7,9 @@ import {
 import { MiraModel } from '../models';
 import { MiraModelMapper } from '../mappers';
 import { NotFoundError } from '~/_shared/domain';
-import { count } from 'console';
-import { update } from 'lodash';
-import { models } from 'mongoose';
-import { skip } from 'node:test';
-
 export class MiraMongooseRepository implements IMiraRepository {
   constructor(private miraModel: typeof MiraModel) {}
-
-
+  
   async insert(entity: Mira): Promise<void> {
     const model = MiraModelMapper.toModel(entity);
     await this.miraModel.create(model);

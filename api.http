@@ -20,8 +20,31 @@ Content-Type: {{contentType}}
     },
     "biography": "some biography",
     "birthdate": "2024-01-15T13:23:16.655+00:00",
-    "educationLevel": "universityEducation"
+    "educationLevel": "university"
 }
 
 ### Get Mira by User
-GET http://{{host}}/miras/936381cb-3a44-4692-b52e-ba302db628f7
+GET http://{{host}}/miras/936381cb-3a44-4692-b52e-ba302db628f7/users
+
+### Get Mira
+GET http://{{host}}/miras/3ba2c9e1-6c4c-425a-8893-8ab6385e57ce
+
+### Update Mira
+PATCH  http://{{host}}/miras/3ba2c9e1-6c4c-425a-8893-8ab6385e57ce
+Content-Type: {{contentType}}
+
+{
+    "gender": "male",
+    "profession": "Software Developer",
+    "yearExperience": 4,
+    "address": {
+        "street": "123 Main St",
+        "city": "New York",
+        "country": "NY"
+    },
+    "biography": "some biography",
+    "birthdate": "2024-01-15T13:23:16.655+00:00",
+    "educationLevel": "university",
+    "isWork": true,
+    "isFreelancer": true
+}
