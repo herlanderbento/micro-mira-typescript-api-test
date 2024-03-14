@@ -1,5 +1,6 @@
 import "reflect-metadata";
 import "express-async-errors";
+import "./_shared/infra/configs/module-alias"
 import "./_shared/infra/configs/env";
 
 import express, { Request, Response } from "express";
@@ -8,7 +9,7 @@ import swaggerUi from "swagger-ui-express";
 
 import "./_shared/infra/db/mongo";
 
-import swaggerDocs from "~/docs/swagger.json";
+import swaggerDocs from "./docs/swagger.json";
 
 import { errors } from "./_shared/domain/errors";
 import { versions } from "./_shared/infra/configs/versions";

@@ -6,4 +6,4 @@ npm run cti create './src/_shared/infra' -- -i '*spec.ts' -i 'migrator-cli.ts' -
 
 npm run cti create './src/modules/mira/application' -- -i '*spec.ts' -b && 
 npm run cti create './src/modules/mira/domain' -- -i '*spec.ts' -b && 
-npm run cti create './src/modules/mira/infra' -- -i '*spec.ts' -b &
+npm run cti create './src/modules/mira/infra' -- -i '*spec.ts' -b

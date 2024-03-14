@@ -29,6 +29,13 @@ GET http://{{host}}/miras/936381cb-3a44-4692-b52e-ba302db628f7/users
 ### Get Mira
 GET http://{{host}}/miras/3ba2c9e1-6c4c-425a-8893-8ab6385e57ce
 
+### List all Miras
+GET http://{{host}}/miras?page=2&perPage=1
+
+### Shared a mira profile
+GET http://{{host}}/miras/3ba2c9e1-6c4c-425a-8893-8ab6385e57ce/shared
+
+
 ### Update Mira
 PATCH  http://{{host}}/miras/3ba2c9e1-6c4c-425a-8893-8ab6385e57ce
 Content-Type: {{contentType}}

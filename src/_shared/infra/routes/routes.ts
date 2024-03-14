@@ -1,5 +1,5 @@
 import Router from "express";
-import { miraRoutes } from "~/modules/mira/infra";
+import { miraRoutes } from "../../../modules/mira/infra/https/routes";
 
 const router = Router();
 

@@ -5,3 +5,4 @@ export * from './db';
 export * from './providers';
 export * from './routes';
 export * from './services';
+export * from './storage';

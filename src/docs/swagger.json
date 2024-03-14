@@ -11,9 +11,7 @@
   "paths": {
     "/v1/miras": {
       "post": {
-        "tags": [
-          "Mira"
-        ],
+        "tags": ["Mira"],
         "summary": "Create mira",
         "description": "Create a mira",
         "requestBody": {
@@ -164,66 +162,10 @@
         }
       }
     },
-    "/v1/miras/{userId}/users": {
-      "get": {
-        "tags": [
-          "Mira"
-        ],
-        "summary": "Get mira by user",
-        "description": "Get a mira by user",
-        "parameters": [
-          {
-            "name": "userId",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "success",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/responseData"
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "Not Found",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "success": {
-                      "type": "boolean",
-                      "example": false
-                    },
-                    "message": {
-                      "type": "string",
-                      "example": "Mira Not Found using ID 936381cb-3a44-4692-b52e-ba302db628f9"
-                    },
-                    "statusCodes": {
-                      "type": "number",
-                      "example": 409
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    },
+
     "/v1/miras/{id}": {
       "get": {
-        "tags": [
-          "Mira"
-        ],
+        "tags": ["Mira"],
         "summary": "Get mira",
         "description": "Get a mira",
         "parameters": [
@@ -274,9 +216,7 @@
         }
       },
       "patch": {
-        "tags": [
-          "Mira"
-        ],
+        "tags": ["Mira"],
         "parameters": [
           {
             "name": "id",
@@ -423,6 +363,112 @@
                           "example": "educationLevel is a required field"
                         }
                       }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/miras/{userId}/users": {
+      "get": {
+        "tags": ["Mira"],
+        "summary": "Get mira by user",
+        "description": "Get a mira by user",
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/responseData"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "example": false
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Mira Not Found using ID 936381cb-3a44-4692-b52e-ba302db628f9"
+                    },
+                    "statusCodes": {
+                      "type": "number",
+                      "example": 409
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/miras/{id}/shared": {
+      "get": {
+        "tags": ["Mira"],
+        "summary": "share a mira profile",
+        "description": "share a mira profile",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/responseData"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "example": false
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Mira Not Found using ID 936381cb-3a44-4692-b52e-ba302db628f9"
+                    },
+                    "statusCodes": {
+                      "type": "number",
+                      "example": 409
                     }
                   }
                 }
