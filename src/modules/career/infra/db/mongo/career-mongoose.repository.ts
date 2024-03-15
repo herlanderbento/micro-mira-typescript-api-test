@@ -72,6 +72,7 @@ export class CareerMongooseRepository implements ICareerRepository {
       throw new NotFoundError(entity.id.toString(), this.getEntity());
     }
   }
+  
   async delete(id: string): Promise<void> {
     const affectedRows = await this.careerModel.findByIdAndDelete(id);
 

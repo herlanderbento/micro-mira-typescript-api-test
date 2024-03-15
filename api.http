@@ -96,3 +96,6 @@ Content-Type: {{contentType}}
 
 ### List all Careers
 GET http://{{host}}/careers/92c9a6a1-e609-441a-b3cf-293b7288aa26?perPage=2
+
+### Delete a Career
+DELETE http://{{host}}/careers/a4166cea-c075-4f68-9c82-bf35956b575e
