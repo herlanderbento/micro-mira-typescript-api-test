@@ -162,7 +162,6 @@
         }
       }
     },
-
     "/v1/miras/{id}": {
       "get": {
         "tags": ["Mira"],
@@ -470,6 +469,85 @@
                       "type": "number",
                       "example": 409
                     }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/careers": {
+      "post": {
+        "tags": ["Careers"],
+        "summary": "Create careers",
+        "description": "Create a careers",
+        "requestBody": {
+          "content":{
+            "application/json":{
+              "schema":{
+                "type":"object",
+                "properties":{
+                  "miraId": {
+                    "required": true,
+                    "type": "string",
+                    "example": "3ba2c9e1-6c4c-425a-8893-8ab6385e57ce"
+                  },
+                  "companyId": {
+                    "type": "string",
+                    "example": "3ba2c9e1-6c4c-425a-8893-8ab6385e57ce"
+                  },
+                  "positionId": {
+                    "type": "string",
+                    "example": "3ba2c9e1-6c4c-425a-8893-8ab6385e57ce"
+                  },
+                  "title": {
+                    "required": true,
+                    "type": "string",
+                    "example": "Software Developer"
+                  },
+                  "companyName": {
+                    "type": "string",
+                    "example": "Mirantes Technologies"
+                  },
+                  "description": {
+                    "type": "string",
+                    "example": "some description"
+                  },
+                  "location": {
+                    "type": "string",
+                    "example": "some location"
+                  },
+                  "locationType": {
+                    "required": true,
+                    "type": "string",
+                    "example": "in-person"
+                  },
+                  "employmentType": {
+                    "required": true,
+                    "type": "string",
+                    "example": "full-time"
+                  },
+                  "startYear": {
+                    "required": true,
+                    "type": "date",
+                    "example": "2024-03-14"
+                  },
+                  "endYear": {
+                    "type": "date",
+                    "example": "2024-03-14"
+                  },
+                  "isShow": {
+                    "type": "boolean",
+                    "example": true
+                  },
+                  "isCurrent": {
+                    "type": "boolean",
+                    "example": false
+                  },
+                  "isVerified": {
+                    "type": "boolean",
+                    "example": false
                   }
                 }
               }
