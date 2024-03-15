@@ -29,18 +29,16 @@ export class CareerMongooseRepository implements ICareerRepository {
     return model ? CareerModelMapper.toEntity(model) : null;
   }
 
-  async findAll(): Promise<Career[]> {
-    const models = await this.careerModel.find();
-
-    return models.map(CareerModelMapper.toEntity);
-  }
-
-  async search(props: CareerSearchParams): Promise<CareerSearchResult> {
+  async findManyByMiraId(
+    miraId: string,
+    props: CareerSearchParams
+  ): Promise<CareerSearchResult> {
     const skip = (props.page - 1) * props.perPage;
     const limit = props.perPage;
 
     const models = await this.careerModel
       .find({
+        miraId,
         ...(props.filter && {
           title: { $regex: new RegExp(props.filter, 'i') },
         }),

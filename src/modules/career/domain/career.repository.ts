@@ -1,4 +1,5 @@
 import {
+  IRepository,
   ISearchableRepository,
   SearchParams,
   SearchResult,
@@ -12,9 +13,17 @@ export class CareerSearchParams extends SearchParams<CareerFilter> {}
 export class CareerSearchResult extends SearchResult<Career> {}
 
 export interface ICareerRepository
-  extends ISearchableRepository<
-    Career,
-    CareerFilter,
-    CareerSearchParams,
-    CareerSearchResult
-  > {}
+  extends Omit<IRepository<Career>, 'findAll'> {
+  findManyByMiraId(
+    miraId: string,
+    props: CareerSearchParams
+  ): Promise<CareerSearchResult>;
+}
+
+// export interface ICareerRepository
+// extends ISearchableRepository<
+//   Career,
+//   CareerFilter,
+//   CareerSearchParams,
+//   CareerSearchResult
+// > {}
