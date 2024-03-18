@@ -205,7 +205,7 @@
                     },
                     "statusCodes": {
                       "type": "number",
-                      "example": 409
+                      "example": 404
                     }
                   }
                 }
@@ -480,8 +480,8 @@
     "/v1/careers": {
       "post": {
         "tags": ["Careers"],
-        "summary": "Create careers",
-        "description": "Create a careers",
+        "summary": "Create career",
+        "description": "Create a career",
         "requestBody": {
           "content":{
             "application/json":{
@@ -548,6 +548,345 @@
                   "isVerified": {
                     "type": "boolean",
                     "example": false
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/responseDataCareer"
+                }
+              }
+            }
+          }, 
+          "404":{
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "example": false
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Mira Not Found using ID 936381cb-3a44-4692-b52e-ba302db628f9"
+                    },
+                    "statusCodes": {
+                      "type": "number",
+                      "example": 404
+                    }
+                  }
+                }
+              }
+            }
+          }, 
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "example": false
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Internal Server Error"
+                    },
+                    "statusCodes": {
+                      "type": "number",
+                      "example": 500
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/careers/{miraId}": {
+      "get": {
+        "tags": ["Careers"],
+        "summary": "List all careers",
+        "description": "List all careers by miraId",
+        "parameters": [
+          {
+            "name": "miraId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "perPage",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "filter",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ], 
+        "responses": {
+          "200": {
+            "description": "success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/responseDataAllCareers"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "example": false
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Mira Not Found using ID 936381cb-3a44-4692-b52e-ba302db628f9"
+                    },
+                    "statusCodes": {
+                      "type": "number",
+                      "example": 404
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/careers/{id}": {
+      "patch": {
+        "tags": ["Careers"],
+        "summary": "Update career",
+        "description": "Update a career",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json":{
+              "schema": {
+                "type": "object",
+                "properties":{
+                  "companyId": {
+                    "type": "string",
+                    "example": "3ba2c9e1-6c4c-425a-8893-8ab6385e57ce"
+                  },
+                  "positionId": {
+                    "type": "string",
+                    "example": "3ba2c9e1-6c4c-425a-8893-8ab6385e57ce"
+                  },
+                  "title": {
+                    "required": true,
+                    "type": "string",
+                    "example": "Software Developer"
+                  },
+                  "companyName": {
+                    "type": "string",
+                    "example": "Mirantes Technologies"
+                  },
+                  "description": {
+                    "type": "string",
+                    "example": "some description"
+                  },
+                  "location": {
+                    "type": "string",
+                    "example": "some location"
+                  },
+                  "locationType": {
+                    "required": true,
+                    "type": "string",
+                    "example": "in-person"
+                  },
+                  "employmentType": {
+                    "required": true,
+                    "type": "string",
+                    "example": "full-time"
+                  },
+                  "startYear": {
+                    "required": true,
+                    "type": "date",
+                    "example": "2024-03-14"
+                  },
+                  "endYear": {
+                    "type": "date",
+                    "example": "2024-03-14"
+                  },
+                  "isShow": {
+                    "type": "boolean",
+                    "example": true
+                  },
+                  "isCurrent": {
+                    "type": "boolean",
+                    "example": false
+                  },
+                  "isVerified": {
+                    "type": "boolean",
+                    "example": false
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "204": {
+            "description": "No content"
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "example": false
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Career Not Found using ID 936381cb-3a44-4692-b52e-ba302db628f9"
+                    },
+                    "statusCodes": {
+                      "type": "number",
+                      "example": 404
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "example": false
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Internal Server Error"
+                    },
+                    "statusCodes": {
+                      "type": "number",
+                      "example": 500
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": ["Careers"],
+        "summary": "Delete career",
+        "description": "Delete a career",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No content"
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "example": false
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Career Not Found using ID 936381cb-3a44-4692-b52e-ba302db628f9"
+                    },
+                    "statusCodes": {
+                      "type": "number",
+                      "example": 404
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "example": false
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Internal Server Error"
+                    },
+                    "statusCodes": {
+                      "type": "number",
+                      "example": 500
+                    }
                   }
                 }
               }
@@ -633,6 +972,193 @@
             "isFreelancer": {
               "type": "boolean",
               "example": false
+            },
+            "createdAt": {
+              "type": "date",
+              "example": "2024-01-15T13:23:16.655+00:00"
+            },
+            "updatedAt": {
+              "type": "date",
+              "example": "2024-01-15T13:23:16.655+00:00"
+            }
+          }
+        }
+      }
+    },
+    "responseDataCareer":{
+      "type": "object",
+      "properties": {
+        "data": {
+          "type": "object",
+          "properties":{
+            "miraId": {
+              "required": true,
+              "type": "string",
+              "example": "3ba2c9e1-6c4c-425a-8893-8ab6385e57ce"
+            },
+            "companyId": {
+              "type": "string",
+              "example": "3ba2c9e1-6c4c-425a-8893-8ab6385e57ce"
+            },
+            "positionId": {
+              "type": "string",
+              "example": "3ba2c9e1-6c4c-425a-8893-8ab6385e57ce"
+            },
+            "title": {
+              "required": true,
+              "type": "string",
+              "example": "Software Developer"
+            },
+            "companyName": {
+              "type": "string",
+              "example": "Mirantes Technologies"
+            },
+            "description": {
+              "type": "string",
+              "example": "some description"
+            },
+            "location": {
+              "type": "string",
+              "example": "some location"
+            },
+            "locationType": {
+              "required": true,
+              "type": "string",
+              "example": "in-person"
+            },
+            "employmentType": {
+              "required": true,
+              "type": "string",
+              "example": "full-time"
+            },
+            "startYear": {
+              "required": true,
+              "type": "date",
+              "example": "2024-03-14"
+            },
+            "endYear": {
+              "type": "date",
+              "example": "2024-03-14"
+            },
+            "isShow": {
+              "type": "boolean",
+              "example": true
+            },
+            "isCurrent": {
+              "type": "boolean",
+              "example": false
+            },
+            "isVerified": {
+              "type": "boolean",
+              "example": false
+            },
+            "createdAt": {
+              "type": "date",
+              "example": "2024-01-15T13:23:16.655+00:00"
+            },
+            "updatedAt": {
+              "type": "date",
+              "example": "2024-01-15T13:23:16.655+00:00"
+            }
+          }
+        }
+      }
+    },
+    "responseDataAllCareers":{
+      "type": "object",
+      "properties": {
+        "data": {
+          "type": "object",
+          "properties": {
+            "items": {
+              "type": "object",
+              "properties":{
+                "miraId": {
+                  "required": true,
+                  "type": "string",
+                  "example": "3ba2c9e1-6c4c-425a-8893-8ab6385e57ce"
+                },
+                "companyId": {
+                  "type": "string",
+                  "example": "3ba2c9e1-6c4c-425a-8893-8ab6385e57ce"
+                },
+                "positionId": {
+                  "type": "string",
+                  "example": "3ba2c9e1-6c4c-425a-8893-8ab6385e57ce"
+                },
+                "title": {
+                  "required": true,
+                  "type": "string",
+                  "example": "Software Developer"
+                },
+                "companyName": {
+                  "type": "string",
+                  "example": "Mirantes Technologies"
+                },
+                "description": {
+                  "type": "string",
+                  "example": "some description"
+                },
+                "location": {
+                  "type": "string",
+                  "example": "some location"
+                },
+                "locationType": {
+                  "required": true,
+                  "type": "string",
+                  "example": "in-person"
+                },
+                "employmentType": {
+                  "required": true,
+                  "type": "string",
+                  "example": "full-time"
+                },
+                "startYear": {
+                  "required": true,
+                  "type": "date",
+                  "example": "2024-03-14"
+                },
+                "endYear": {
+                  "type": "date",
+                  "example": "2024-03-14"
+                },
+                "isShow": {
+                  "type": "boolean",
+                  "example": true
+                },
+                "isCurrent": {
+                  "type": "boolean",
+                  "example": false
+                },
+                "isVerified": {
+                  "type": "boolean",
+                  "example": false
+                },
+                "createdAt": {
+                  "type": "date",
+                  "example": "2024-01-15T13:23:16.655+00:00"
+                },
+                "updatedAt": {
+                  "type": "date",
+                  "example": "2024-01-15T13:23:16.655+00:00"
+                }
+              }
+            },
+            "total": {
+              "type": "number",
+              "example": 15
+            },
+            "currentPage": {
+              "type": "number",
+              "example": 1
+            },
+            "lastPage": {
+              "type": "number",
+              "example": 2
+            },
+            "perPage": {
+              "type": "number",
+              "example": 15
             }
           }
         }
