@@ -12,6 +12,6 @@ npm run cti create './src/modules/career/application' -- -i '*spec.ts' -b &&
 npm run cti create './src/modules/career/domain' -- -i '*spec.ts' -b && 
 npm run cti create './src/modules/career/infra' -- -i '*spec.ts' -b &&
 
-# npm run cti create './src/modules/education/application' -- -i '*spec.ts' -b && 
-npm run cti create './src/modules/education/domain' -- -i '*spec.ts' -b
-# npm run cti create './src/modules/education/infra' -- -i '*spec.ts' -b 
+npm run cti create './src/modules/education/application' -- -i '*spec.ts' -b && 
+npm run cti create './src/modules/education/domain' -- -i '*spec.ts' -b &&
+npm run cti create './src/modules/education/infra' -- -i '*spec.ts' -b 

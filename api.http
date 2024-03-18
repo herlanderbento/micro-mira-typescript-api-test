@@ -99,3 +99,18 @@ GET http://{{host}}/careers/3ba2c9e1-6c4c-425a-8893-8ab6385e57ce?page=2
 
 ### Delete a Career
 DELETE http://{{host}}/careers/a4166cea-c075-4f68-9c82-bf35956b575e
+
+
+#### Education Module  ############################
+POST  http://{{host}}/educations
+Content-Type: {{contentType}}
+
+{
+    "miraId": "92c9a6a1-e609-441a-b3cf-293b7288aa26",
+    "title": "secondary vocational training in IT",
+    "institute": "Tree of Happiness School",
+    "description": "some description",
+    "location": "Luanda, Angola",
+    "startYear": "2023-08-28",
+    "isCurrent": false,
+}

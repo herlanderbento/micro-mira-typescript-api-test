@@ -1,6 +1,5 @@
 import {
   IRepository,
-  ISearchableRepository,
   SearchParams,
   SearchResult,
 } from '~/_shared/domain';

@@ -7,7 +7,7 @@ export class EducationSearchParams extends SearchParams<EducationFilter> {}
 
 export class EducationSearchResult extends SearchResult<Education> {}
 
-export interface ICareerRepository
+export interface IEducationRepository
   extends Omit<IRepository<Education>, 'findAll'> {
   findManyByMiraId(
     miraId: string,
