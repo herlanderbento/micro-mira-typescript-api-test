@@ -9,15 +9,13 @@ POST http://{{host}}/miras
 Content-Type: {{contentType}}
 
 {
-    "userId": "936381cb-3a44-4692-b52e-ba302db628f7",
+    "userId": "936381cb-3a44-4692-b52e-ba302db628f1",
     "gender": "male",
     "profession": "Software Developer",
     "yearExperience": 4,
-    "address": {
-        "street": "123 Main St",
-        "city": "New York",
-        "country": "NY"
-    },
+    "street": "123 Main St",
+    "city": "New York",
+    "country": "NY",
     "biography": "some biography",
     "birthdate": "2024-01-15T13:23:16.655+00:00",
     "educationLevel": "university"
@@ -30,7 +28,7 @@ GET http://{{host}}/miras/936381cb-3a44-4692-b52e-ba302db628f7/users
 GET http://{{host}}/miras/3ba2c9e1-6c4c-425a-8893-8ab6385e57ce
 
 ### List all Miras
-GET http://{{host}}/miras?page=2&perPage=1
+GET http://{{host}}/miras
 
 ### Shared a mira profile
 GET http://{{host}}/miras/3ba2c9e1-6c4c-425a-8893-8ab6385e57ce/shared
@@ -44,11 +42,9 @@ Content-Type: {{contentType}}
     "gender": "male",
     "profession": "Software Developer",
     "yearExperience": 4,
-    "address": {
-        "street": "123 Main St",
-        "city": "New York",
-        "country": "NY"
-    },
+    "street": "123 Main St",
+    "city": "New York",
+    "country": "NY",
     "biography": "some biography",
     "birthdate": "2024-01-15T13:23:16.655+00:00",
     "educationLevel": "university",
@@ -106,11 +102,29 @@ POST  http://{{host}}/educations
 Content-Type: {{contentType}}
 
 {
-    "miraId": "92c9a6a1-e609-441a-b3cf-293b7288aa26",
+    "miraId": "d0927346-f8f1-4d37-9390-d1173725984c",
     "title": "secondary vocational training in IT",
     "institute": "Tree of Happiness School",
     "description": "some description",
     "location": "Luanda, Angola",
     "startYear": "2023-08-28",
-    "isCurrent": false,
+    "isCurrent": false
 }
+
+### Update a new education
+PATCH http://{{host}}/educations/b3ffad07-adda-4e60-b716-02aa9462248a
+Content-Type: {{contentType}}
+
+{
+    "title": "secondary vocational training in IT",
+    "institute": "Tree of Happiness School",
+    "description": "some description",
+    "location": "Luanda, Angola",
+    "startYear": "2023-08-28",
+    "endYear": "2024-08-28",
+    "isCurrent": true
+}
+
+### List all Education
+GET http://{{host}}/educations/d0927346-f8f1-4d37-9390-d1173725984c?page=1&perPage=15
+Content-Type: {{contentType}}

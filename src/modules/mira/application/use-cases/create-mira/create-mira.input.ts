@@ -8,7 +8,9 @@ export type CreateMiraInput = {
   yearExperience: number
   biography?: string
   birthdate: Date
-  address: Address
+  country?: string
+  city?: string
+  street?: string
   educationLevel: EducationLevelTypeEnum
   isWork?: boolean
   isFreelancer?: boolean

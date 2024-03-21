@@ -1,5 +1,4 @@
 import { AggregateRoot, EntityID, Optional } from '~/_shared/domain';
-import { Address } from '../value-object';
 import { EducationLevelTypeEnum, GenderTypeEnum } from '../enums';
 
 export type MiraProps = {
@@ -9,7 +8,9 @@ export type MiraProps = {
   yearExperience: number;
   biography?: string | null;
   birthdate: Date;
-  address: Address;
+  country?: string | null;
+  city?: string | null;
+  street?: string | null;
   educationLevel: EducationLevelTypeEnum;
   isWork?: boolean;
   isFreelancer?: boolean;
@@ -47,12 +48,16 @@ export class Mira extends AggregateRoot<MiraProps> {
     return this.props.birthdate;
   }
 
-  get address(): Address {
-    return this.props.address;
+  get country() {
+    return this.props.country;
   }
 
-  changeAddress(address: Address) {
-    this.props.address = address;
+  get city() {
+    return this.props.city;
+  }
+
+  get street() {
+    return this.props.street;
   }
 
   get educationLevel() {
@@ -90,21 +95,23 @@ export class Mira extends AggregateRoot<MiraProps> {
   freelancer() {
     this.props.isFreelancer = true;
   }
-
-  set address(address: Address) {
-    this.props.address = address;
-  }
-
   static create(
-    props: Optional<MiraProps, 'createdAt' | 'updatedAt'>,
+    props: Optional<
+      MiraProps,
+      'country' | 'city' | 'street' | 'createdAt' | 'updatedAt'
+    >,
     id?: EntityID
   ) {
     const mira = new Mira(
       {
         ...props,
         biography: props.biography ?? null,
+        country: props.country ?? null,
+        city: props.city ?? null,
+        street: props.street ?? null,
         coverImage: props.coverImage ?? null,
         isWork: props.isWork ?? false,
+
         isFreelancer: props.isFreelancer ?? false,
         createdAt: props.createdAt ?? new Date(),
         updatedAt: props.updatedAt ?? new Date(),

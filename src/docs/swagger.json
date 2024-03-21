@@ -45,22 +45,17 @@
                     "type": "string",
                     "example": "university"
                   },
-                  "address": {
-                    "type": "object",
-                    "properties": {
-                      "street": {
-                        "type": "string",
-                        "example": "123 Main St"
-                      },
-                      "city": {
-                        "type": "string",
-                        "example": "New York"
-                      },
-                      "country": {
-                        "type": "string",
-                        "example": "Angola"
-                      }
-                    }
+                  "street": {
+                    "type": "string",
+                    "example": "123 Main St"
+                  },
+                  "city": {
+                    "type": "string",
+                    "example": "New York"
+                  },
+                  "country": {
+                    "type": "string",
+                    "example": "Angola"
                   },
                   "biography": {
                     "type": "string",
@@ -254,22 +249,17 @@
                     "type": "string",
                     "example": "university"
                   },
-                  "address": {
-                    "type": "object",
-                    "properties": {
-                      "street": {
-                        "type": "string",
-                        "example": "123 Main St"
-                      },
-                      "city": {
-                        "type": "string",
-                        "example": "New York"
-                      },
-                      "country": {
-                        "type": "string",
-                        "example": "Angola"
-                      }
-                    }
+                  "street": {
+                    "type": "string",
+                    "example": "123 Main St"
+                  },
+                  "city": {
+                    "type": "string",
+                    "example": "New York"
+                  },
+                  "country": {
+                    "type": "string",
+                    "example": "Angola"
                   },
                   "biography": {
                     "type": "string",
@@ -940,22 +930,17 @@
               "type": "string",
               "example": "university"
             },
-            "address": {
-              "type": "object",
-              "properties": {
-                "street": {
-                  "type": "string",
-                  "example": "123 Main St"
-                },
-                "city": {
-                  "type": "string",
-                  "example": "New York"
-                },
-                "country": {
-                  "type": "string",
-                  "example": "Angola"
-                }
-              }
+            "street": {
+              "type": "string",
+              "example": "123 Main St"
+            },
+            "city": {
+              "type": "string",
+              "example": "New York"
+            },
+            "country": {
+              "type": "string",
+              "example": "Angola"
             },
             "biography": {
               "type": "string",

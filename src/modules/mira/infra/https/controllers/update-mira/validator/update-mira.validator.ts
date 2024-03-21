@@ -17,17 +17,9 @@ export async function updateMiraValidated(request: Request) {
     yearExperience: Yup.number().required(),
     biography: Yup.string(),
     birthdate: Yup.date().required(),
-    address: Yup.object().shape({
-      country: Yup.string(),
-      city: Yup.string(),
-      street: Yup.string(),
-    }).transform((originalValue, originalObject) => {
-      if (originalValue instanceof Address) {
-        return originalValue;
-      }
-      return Address.create(originalObject);
-    }).required(),
-    
+    country: Yup.string(),
+    city: Yup.string(),
+    street: Yup.string(),
     educationLevel: Yup.mixed<EducationLevelTypeEnum>()
       .oneOf(Object.values(EducationLevelTypeEnum))
       .required(),

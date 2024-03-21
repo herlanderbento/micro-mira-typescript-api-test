@@ -38,19 +38,17 @@ export const MiraModel = model<IMiraModelDocument>(
       type: Date,
       required: true,
     },
-    address: {
-      country: {
-        type: String,
-        default: null
-      },
-      city: {
-        type: String,
-        default: null
-      },
-      street: {
-        type: String,
-        default: null
-      },
+    country: {
+      type: String,
+      default: null
+    },
+    city: {
+      type: String,
+      default: null
+    },
+    street: {
+      type: String,
+      default: null
     },
     educationLevel: {
       type: String,
