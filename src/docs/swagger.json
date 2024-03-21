@@ -473,11 +473,11 @@
         "summary": "Create career",
         "description": "Create a career",
         "requestBody": {
-          "content":{
-            "application/json":{
-              "schema":{
-                "type":"object",
-                "properties":{
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
                   "miraId": {
                     "required": true,
                     "type": "string",
@@ -554,8 +554,8 @@
                 }
               }
             }
-          }, 
-          "404":{
+          },
+          "404": {
             "description": "Not Found",
             "content": {
               "application/json": {
@@ -578,7 +578,7 @@
                 }
               }
             }
-          }, 
+          },
           "500": {
             "description": "Internal Server Error",
             "content": {
@@ -641,7 +641,7 @@
               "type": "string"
             }
           }
-        ], 
+        ],
         "responses": {
           "200": {
             "description": "success",
@@ -697,10 +697,10 @@
         ],
         "requestBody": {
           "content": {
-            "application/json":{
+            "application/json": {
               "schema": {
                 "type": "object",
-                "properties":{
+                "properties": {
                   "companyId": {
                     "type": "string",
                     "example": "3ba2c9e1-6c4c-425a-8893-8ab6385e57ce"
@@ -884,6 +884,194 @@
           }
         }
       }
+    },
+    "/v1/educations": {
+      "post": {
+        "tags": ["Educations"],
+        "summary": "Create education",
+        "description": "Create a new education",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "miraId": {
+                    "required": true,
+                    "type": "string",
+                    "example": "936381cb-3a44-4692-b52e-ba302db628f7"
+                  },
+                  "title": {
+                    "required": true,
+                    "type": "string",
+                    "example": "secondary vocational training in IT"
+                  },
+                  "institute": {
+                    "required": true,
+                    "type": "string",
+                    "example": "Tree of Happiness School"
+                  },
+                  "description": {
+                    "type": "string",
+                    "example": "some description"
+                  },
+                  "location": {
+                    "type": "string",
+                    "example": "Luanda, Angola"
+                  },
+                  "startYear": {
+                    "required": true,
+                    "type": "date",
+                    "example": "2024-03-14"
+                  },
+                  "endYear": {
+                    "type": "date",
+                    "example": "2024-03-14"
+                  },
+                  "isCurrent": {
+                    "type": "boolean",
+                    "example": false
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "204": {
+            "description": "Created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/responseDataEducation"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "example": false
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Mira Not Found using ID 936381cb-3a44-4692-b52e-ba302db628f9"
+                    },
+                    "statusCodes": {
+                      "type": "number",
+                      "example": 404
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "example": false
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Internal Server Error"
+                    },
+                    "statusCodes": {
+                      "type": "number",
+                      "example": 500
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/educations/{miraId}": {
+      "get": {
+        "tags": ["Educations"],
+        "summary": "List all Educations",
+        "description": "List all Educations by miraId",
+        "parameters": [
+          {
+            "name": "miraId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "perPage",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "filter",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/responseDataEducation"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "example": false
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Mira Not Found using ID 936381cb-3a44-4692-b52e-ba302db628f9"
+                    },
+                    "statusCodes": {
+                      "type": "number",
+                      "example": 404
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
     }
   },
   "components": {
@@ -970,12 +1158,12 @@
         }
       }
     },
-    "responseDataCareer":{
+    "responseDataCareer": {
       "type": "object",
       "properties": {
         "data": {
           "type": "object",
-          "properties":{
+          "properties": {
             "miraId": {
               "required": true,
               "type": "string",
@@ -1049,7 +1237,7 @@
         }
       }
     },
-    "responseDataAllCareers":{
+    "responseDataAllCareers": {
       "type": "object",
       "properties": {
         "data": {
@@ -1057,7 +1245,7 @@
           "properties": {
             "items": {
               "type": "object",
-              "properties":{
+              "properties": {
                 "miraId": {
                   "required": true,
                   "type": "string",
@@ -1144,6 +1332,122 @@
             "perPage": {
               "type": "number",
               "example": 15
+            }
+          }
+        }
+      }
+    },
+    "responseDataEducation": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "required": true,
+              "type": "string",
+              "example": "3ba2c9e1-6c4c-425a-8893-8ab6385e57ce"
+            },
+            "miraId": {
+              "required": true,
+              "type": "string",
+              "example": "3ba2c9e1-6c4c-425a-8893-8ab6385e57ce"
+            },
+            "title": {
+              "required": true,
+              "type": "string",
+              "example": "Software Developer"
+            },
+            "institute": {
+              "type": "string",
+              "example": "Tree of Happiness School"
+            },
+            "description": {
+              "type": "string",
+              "example": "some description"
+            },
+            "location": {
+              "type": "string",
+              "example": "some location"
+            },
+            "startYear": {
+              "required": true,
+              "type": "date",
+              "example": "2024-03-14"
+            },
+            "endYear": {
+              "type": "date",
+              "example": "2024-03-14"
+            },
+            "isCurrent": {
+              "type": "boolean",
+              "example": false
+            },
+            "createdAt": {
+              "type": "date",
+              "example": "2024-01-15T13:23:16.655+00:00"
+            },
+            "updatedAt": {
+              "type": "date",
+              "example": "2024-01-15T13:23:16.655+00:00"
+            }
+          }
+        }
+      }
+    },
+    "responseDataAllEducations": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "required": true,
+              "type": "string",
+              "example": "3ba2c9e1-6c4c-425a-8893-8ab6385e57ce"
+            },
+            "miraId": {
+              "required": true,
+              "type": "string",
+              "example": "3ba2c9e1-6c4c-425a-8893-8ab6385e57ce"
+            },
+            "title": {
+              "required": true,
+              "type": "string",
+              "example": "Software Developer"
+            },
+            "institute": {
+              "type": "string",
+              "example": "Tree of Happiness School"
+            },
+            "description": {
+              "type": "string",
+              "example": "some description"
+            },
+            "location": {
+              "type": "string",
+              "example": "some location"
+            },
+            "startYear": {
+              "required": true,
+              "type": "date",
+              "example": "2024-03-14"
+            },
+            "endYear": {
+              "type": "date",
+              "example": "2024-03-14"
+            },
+            "isCurrent": {
+              "type": "boolean",
+              "example": false
+            },
+            "createdAt": {
+              "type": "date",
+              "example": "2024-01-15T13:23:16.655+00:00"
+            },
+            "updatedAt": {
+              "type": "date",
+              "example": "2024-01-15T13:23:16.655+00:00"
             }
           }
         }

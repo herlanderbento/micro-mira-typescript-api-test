@@ -5,25 +5,21 @@ import {
   InvalidAttachmentTypeError,
 } from '../../common';
 import { UploadAndCreateAttachmentInput } from './upload-and-create-attachment.input';
-import {
-  Attachment,
-  AttachmentProps,
-  AttachmentsRepository,
-} from '~/modules/attachment/domain';
+import { Attachment, AttachmentsRepository } from '~/modules/attachment/domain';
 
 export class UploadAndCreateAttachmentUseCase
   implements
     IUseCase<UploadAndCreateAttachmentInput, UploadAndCreateAttachmentOutput>
 {
   constructor(
-    private attachmentsRepository: AttachmentsRepository,
+    private attachmentRepository: AttachmentsRepository,
     private storage: Storage
   ) {}
   async execute(
     input: UploadAndCreateAttachmentInput
-  ): Promise<AttachmentProps> {
+  ): Promise<UploadAndCreateAttachmentOutput> {
     if (!/^(image\/(jpeg|png))$|^application\/pdf$/.test(input.fileType)) {
-     throw new InvalidAttachmentTypeError(input.fileType);
+      throw new InvalidAttachmentTypeError(input.fileType);
     }
 
     const { url } = await this.storage.store(input);
@@ -33,7 +29,7 @@ export class UploadAndCreateAttachmentUseCase
       url,
     });
 
-    await this.attachmentsRepository.create(attachment);
+    await this.attachmentRepository.insert(attachment);
 
     return AttachmentOutputMapper.toOutput(attachment);
   }

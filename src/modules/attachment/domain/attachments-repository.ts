@@ -1,5 +1,5 @@
 import { Attachment } from "./attachment";
 
 export interface AttachmentsRepository {
-  create(entity: Attachment): Promise<void>;
+  insert(entity: Attachment): Promise<void>;
 }
