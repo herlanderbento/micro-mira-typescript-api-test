@@ -25,7 +25,7 @@ Content-Type: {{contentType}}
 GET http://{{host}}/miras/936381cb-3a44-4692-b52e-ba302db628f7/users
 
 ### Get Mira
-GET http://{{host}}/miras/3ba2c9e1-6c4c-425a-8893-8ab6385e57ce
+GET http://{{host}}/miras/76a477fb-f51f-4bd6-a73b-48a92298c2a0
 
 ### List all Miras
 GET http://{{host}}/miras
@@ -102,7 +102,7 @@ POST  http://{{host}}/educations
 Content-Type: {{contentType}}
 
 {
-    "miraId": "d0927346-f8f1-4d37-9390-d1173725984c",
+    "miraId": "8a247a09-36fe-483e-b843-b26a4296363e",
     "title": "secondary vocational training in IT",
     "institute": "Tree of Happiness School",
     "description": "some description",

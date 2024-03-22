@@ -9,7 +9,7 @@ import { MiraModelMapper } from '../mappers';
 import { NotFoundError } from '~/_shared/domain';
 export class MiraMongooseRepository implements IMiraRepository {
   constructor(private miraModel: typeof MiraModel) {}
-  
+
   async insert(entity: Mira): Promise<void> {
     const model = MiraModelMapper.toModel(entity);
     await this.miraModel.create(model);
@@ -18,7 +18,7 @@ export class MiraMongooseRepository implements IMiraRepository {
   async findById(id: string): Promise<Mira | null> {
     const model = await this.miraModel.findOne({
       _id: id,
-    })
+    });
 
     return model ? MiraModelMapper.toEntity(model) : null;
   }
@@ -26,7 +26,7 @@ export class MiraMongooseRepository implements IMiraRepository {
   async findByUserId(userId: string): Promise<Mira | null> {
     const model = await this.miraModel.findOne({
       userId,
-    })
+    });
 
     return model ? MiraModelMapper.toEntity(model) : null;
   }

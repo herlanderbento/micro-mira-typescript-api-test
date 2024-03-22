@@ -1,17 +1,19 @@
 import { Schema, Types, model } from 'mongoose';
 import { EducationProps } from '~/modules/education/domain';
+import { MiraModel } from '~/modules/mira/infra';
 
 export type IEducationModelDocument = Document & {
-  _id: Types.UUID;
+  _id:Schema.Types.UUID;
 } & EducationProps;
 
 export const EducationModel = model(
   'Educations',
   new Schema<IEducationModelDocument>({
-    _id: String,
+    _id:Schema.Types.UUID,
     miraId: {
-      type: String,
+      type:Schema.Types.UUID,
       required: true,
+      ref: MiraModel
     },
     title: {
       type: String,

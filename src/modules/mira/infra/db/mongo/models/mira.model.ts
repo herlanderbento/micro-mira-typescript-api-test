@@ -1,4 +1,5 @@
-import { Schema, Types, model } from 'mongoose';
+import { Schema, model } from 'mongoose';
+
 import {
   EducationLevelTypeEnum,
   GenderTypeEnum,
@@ -6,15 +7,15 @@ import {
 } from '~/modules/mira/domain';
 
 export type IMiraModelDocument = Document & {
-  _id: Types.UUID;
+  _id: Schema.Types.UUID;
 } & MiraProps;
 
-export const MiraModel = model<IMiraModelDocument>(
+export const MiraModel = model(
   'miras',
-  new Schema({
-    _id: String,
+  new Schema<IMiraModelDocument>({
+    _id: Schema.Types.UUID,
     userId: {
-      type: String,
+      type: Schema.Types.UUID,
       required: true,
     },
     gender: {
@@ -40,15 +41,15 @@ export const MiraModel = model<IMiraModelDocument>(
     },
     country: {
       type: String,
-      default: null
+      default: null,
     },
     city: {
       type: String,
-      default: null
+      default: null,
     },
     street: {
       type: String,
-      default: null
+      default: null,
     },
     educationLevel: {
       type: String,
@@ -60,5 +61,8 @@ export const MiraModel = model<IMiraModelDocument>(
     coverImage: String,
     createdAt: Date,
     updatedAt: Date,
+    // educations: [{ type: mongoose.Schema.Types.UUID, ref: 'Educations' }],
   })
 );
+
+// Required<IMiraModelDocument & { educations: IEducationModelDocument }>

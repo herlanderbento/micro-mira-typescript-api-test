@@ -16,6 +16,7 @@ export const CareerModel = model(
     miraId: {
       type: String,
       required: true,
+      ref: 'miras'
     },
     companyId: {
       type: String,

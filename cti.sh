@@ -18,4 +18,8 @@ npm run cti create './src/modules/education/infra' -- -i '*spec.ts' -b  &&
 
 npm run cti create './src/modules/attachment/application' -- -i '*spec.ts' -b && 
 npm run cti create './src/modules/attachment/domain' -- -i '*spec.ts' -b &&
-npm run cti create './src/modules/attachment/infra' -- -i '*spec.ts' -b 
+npm run cti create './src/modules/attachment/infra' -- -i '*spec.ts' -b  &&
+
+npm run cti create './src/modules/tool/application' -- -i '*spec.ts' -b && 
+npm run cti create './src/modules/tool/domain' -- -i '*spec.ts' -b &&
+npm run cti create './src/modules/tool/infra' -- -i '*spec.ts' -b 
