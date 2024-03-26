@@ -84,7 +84,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/responseData"
+                  "$ref": "#/components/responseMiraData"
                 }
               }
             }
@@ -178,7 +178,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/responseData"
+                  "$ref": "#/components/responseMiraData"
                 }
               }
             }
@@ -288,7 +288,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/responseData"
+                  "$ref": "#/components/responseMiraData"
                 }
               }
             }
@@ -382,7 +382,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/responseData"
+                  "$ref": "#/components/responseMiraData"
                 }
               }
             }
@@ -435,7 +435,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/responseData"
+                  "$ref": "#/components/responseMiraData"
                 }
               }
             }
@@ -550,7 +550,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/responseDataCareer"
+                  "$ref": "#/components/responseCareerData"
                 }
               }
             }
@@ -648,7 +648,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/responseDataAllCareers"
+                  "$ref": "#/components/responseCareersData"
                 }
               }
             }
@@ -943,7 +943,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/responseDataEducation"
+                  "$ref": "#/components/responseEducationData"
                 }
               }
             }
@@ -1041,7 +1041,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/responseDataEducation"
+                  "$ref": "#/components/responseEducationsData"
                 }
               }
             }
@@ -1072,6 +1072,193 @@
           }
         }
       }
+    },
+    "/v1/educations/{id}": {
+      "patch": {
+        "tags": ["Educations"],
+        "summary": "Update education",
+        "description": "Update a new education",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "title": {
+                    "required": true,
+                    "type": "string",
+                    "example": "secondary vocational training in IT"
+                  },
+                  "institute": {
+                    "required": true,
+                    "type": "string",
+                    "example": "Tree of Happiness School"
+                  },
+                  "description": {
+                    "type": "string",
+                    "example": "some description"
+                  },
+                  "location": {
+                    "type": "string",
+                    "example": "Luanda, Angola"
+                  },
+                  "startYear": {
+                    "required": true,
+                    "type": "date",
+                    "example": "2024-03-14"
+                  },
+                  "endYear": {
+                    "type": "date",
+                    "example": "2024-03-14"
+                  },
+                  "isCurrent": {
+                    "type": "boolean",
+                    "example": false
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "204": {
+            "description": "Created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/responseEducationData"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "example": false
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Education Not Found using ID 936381cb-3a44-4692-b52e-ba302db628f9"
+                    },
+                    "statusCodes": {
+                      "type": "number",
+                      "example": 404
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "example": false
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Internal Server Error"
+                    },
+                    "statusCodes": {
+                      "type": "number",
+                      "example": 500
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": ["Educations"],
+        "summary": "Delete education",
+        "description": "Delete a new education",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No content"
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "example": false
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Education Not Found using ID 936381cb-3a44-4692-b52e-ba302db628f9"
+                    },
+                    "statusCodes": {
+                      "type": "number",
+                      "example": 404
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "example": false
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Internal Server Error"
+                    },
+                    "statusCodes": {
+                      "type": "number",
+                      "example": 500
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
     }
   },
   "components": {
@@ -1082,7 +1269,7 @@
         "name": "x-access-token"
       }
     },
-    "responseData": {
+    "responseMiraData": {
       "type": "object",
       "properties": {
         "data": {
@@ -1158,7 +1345,7 @@
         }
       }
     },
-    "responseDataCareer": {
+    "responseCareerData": {
       "type": "object",
       "properties": {
         "data": {
@@ -1237,7 +1424,7 @@
         }
       }
     },
-    "responseDataAllCareers": {
+    "responseCareersData": {
       "type": "object",
       "properties": {
         "data": {
@@ -1337,7 +1524,7 @@
         }
       }
     },
-    "responseDataEducation": {
+    "responseEducationData": {
       "type": "object",
       "properties": {
         "data": {
@@ -1395,59 +1582,80 @@
         }
       }
     },
-    "responseDataAllEducations": {
+    "responseEducationsData": {
       "type": "object",
       "properties": {
         "data": {
           "type": "object",
           "properties": {
-            "id": {
-              "required": true,
-              "type": "string",
-              "example": "3ba2c9e1-6c4c-425a-8893-8ab6385e57ce"
+            "items": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "required": true,
+                  "type": "string",
+                  "example": "3ba2c9e1-6c4c-425a-8893-8ab6385e57ce"
+                },
+                "miraId": {
+                  "required": true,
+                  "type": "string",
+                  "example": "3ba2c9e1-6c4c-425a-8893-8ab6385e57ce"
+                },
+                "title": {
+                  "required": true,
+                  "type": "string",
+                  "example": "Software Developer"
+                },
+                "institute": {
+                  "type": "string",
+                  "example": "Tree of Happiness School"
+                },
+                "description": {
+                  "type": "string",
+                  "example": "some description"
+                },
+                "location": {
+                  "type": "string",
+                  "example": "some location"
+                },
+                "startYear": {
+                  "required": true,
+                  "type": "date",
+                  "example": "2024-03-14"
+                },
+                "endYear": {
+                  "type": "date",
+                  "example": "2024-03-14"
+                },
+                "isCurrent": {
+                  "type": "boolean",
+                  "example": false
+                },
+                "createdAt": {
+                  "type": "date",
+                  "example": "2024-01-15T13:23:16.655+00:00"
+                },
+                "updatedAt": {
+                  "type": "date",
+                  "example": "2024-01-15T13:23:16.655+00:00"
+                }
+              }
             },
-            "miraId": {
-              "required": true,
-              "type": "string",
-              "example": "3ba2c9e1-6c4c-425a-8893-8ab6385e57ce"
+            "total": {
+              "type": "number",
+              "example": 15
             },
-            "title": {
-              "required": true,
-              "type": "string",
-              "example": "Software Developer"
+            "currentPage": {
+              "type": "number",
+              "example": 1
             },
-            "institute": {
-              "type": "string",
-              "example": "Tree of Happiness School"
+            "lastPage": {
+              "type": "number",
+              "example": 2
             },
-            "description": {
-              "type": "string",
-              "example": "some description"
-            },
-            "location": {
-              "type": "string",
-              "example": "some location"
-            },
-            "startYear": {
-              "required": true,
-              "type": "date",
-              "example": "2024-03-14"
-            },
-            "endYear": {
-              "type": "date",
-              "example": "2024-03-14"
-            },
-            "isCurrent": {
-              "type": "boolean",
-              "example": false
-            },
-            "createdAt": {
-              "type": "date",
-              "example": "2024-01-15T13:23:16.655+00:00"
-            },
-            "updatedAt": {
-              "type": "date",
-              "example": "2024-01-15T13:23:16.655+00:00"
+            "perPage": {
+              "type": "number",
+              "example": 15
             }
           }
         }

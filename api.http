@@ -102,7 +102,7 @@ POST  http://{{host}}/educations
 Content-Type: {{contentType}}
 
 {
-    "miraId": "8a247a09-36fe-483e-b843-b26a4296363e",
+    "miraId": "76a477fb-f51f-4bd6-a73b-48a92298c2a0",
     "title": "secondary vocational training in IT",
     "institute": "Tree of Happiness School",
     "description": "some description",
@@ -128,3 +128,11 @@ Content-Type: {{contentType}}
 ### List all Education
 GET http://{{host}}/educations/d0927346-f8f1-4d37-9390-d1173725984c?page=1&perPage=15
 Content-Type: {{contentType}}
+
+### LDelete an Education
+DELETE  http://{{host}}/educations/d0927346-f8f1-4d37-9390-d1173725984c
+Content-Type: {{contentType}}
+
+
+#### Tool Module  ############################
+POST  http://{{host}}/experiences

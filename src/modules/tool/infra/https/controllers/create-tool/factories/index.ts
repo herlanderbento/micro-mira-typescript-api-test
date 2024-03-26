@@ -1,3 +1,3 @@
 // created from 'create-ts-index'
 
-export * from './create-mira.factory';
+export * from './create-tool.factory';
